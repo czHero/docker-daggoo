@@ -3,7 +3,7 @@ services:
     db:
         image: chizhang/oracle-ee-11g
         ports:
-            - "9008:1521"
+            - "15215:1521"
         volumes:
             - /data/oracle/data:/u01/app/oracle
 
@@ -34,7 +34,7 @@ services:
             - /data/var/log:/var/log
             - /data/www:/data/www
         ports:
-            - "9009:80"
+            - "80:80"
         links:
             - worker
 
