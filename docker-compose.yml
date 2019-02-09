@@ -1,0 +1,40 @@
+version: "3"
+services:
+    db:
+        image: chizhang/oracle-ee-11g
+        ports:
+            - "9008:1521"
+        volumes:
+            - /data/oracle/data:/u01/app/oracle
+
+    redis:
+        image: redis
+
+
+    worker:
+        image: chizhang/daggoo
+        # build: ./worker
+        command: /bin/bash start.sh
+        tty: true
+        volumes:
+            - /data:/data
+        sysctls:
+            net.core.somaxconn: 4096
+        depends_on: 
+            - db 
+            - redis 
+        links:
+            - db 
+            - redis
+
+    web:
+        images: chizhang/nginx
+        # build: ./web
+        volumes:
+            - /data/var/log:/var/log
+            - /data/www:/data/www
+        ports:
+            - "9009:80"
+        links:
+            - worker
+
