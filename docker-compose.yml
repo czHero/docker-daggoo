@@ -9,6 +9,8 @@ services:
 
     redis:
         image: redis
+#        ports:
+#            - "16379:6379"
 
 
     worker:
@@ -20,6 +22,8 @@ services:
             - /data:/data
         sysctls:
             net.core.somaxconn: 4096
+#        ports:
+#            - "8000:8000"
         depends_on: 
             - db 
             - redis 
@@ -38,3 +42,24 @@ services:
         links:
             - worker
 
+    neo4j:
+        image: neo4j
+        volumes:
+            - /data/neo4j:/data
+        ports:
+            - "17474:7474"
+
+    es:
+        image: elasticsearch:6.5.4
+        volumes:
+            - /data/elasticsearch:/usr/share/elasticsearch/data
+        ports:
+            - "9003:9300"
+            - "9002:9200"
+        sysctls:
+            vm.max_map_count: 262144
+        networks:
+            - somenetwork
+
+networks:
+    somenetwork:
