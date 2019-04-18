@@ -61,5 +61,14 @@ services:
         networks:
             - somenetwork
 
+    mongo:
+        image: mongo
+        volumes:
+            - /data/mongodb:/data/db
+        ports:
+            - "27077:27017"
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: daggoo
+            MONGO_INITDB_ROOT_PASSWORD: daggoo
 networks:
     somenetwork:
