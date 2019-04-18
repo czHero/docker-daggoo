@@ -63,6 +63,7 @@ services:
 
     mongo:
         image: mongo
+        restart: always
         volumes:
             - /data/mongodb:/data/db
         ports:
