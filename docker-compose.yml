@@ -32,7 +32,7 @@ services:
             - redis
 
     web:
-        images: chizhang/nginx
+        image: chizhang/nginx
         # build: ./web
         volumes:
             - /data/var/log:/var/log
