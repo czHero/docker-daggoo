@@ -19,7 +19,8 @@ RUN ln -s -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 		&& pyenv global 3.7.2 \
 		&& source ~/.bashrc \
 		&& pip install --upgrade pip \
-		&& pip install -r requirements.txt -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
+		&& pip install -r requirements.txt
+#-i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 # EXPOSE 8000
 
 
