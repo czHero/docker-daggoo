@@ -30,6 +30,8 @@ services:
         links:
             - db 
             - redis
+         networks:
+             - outside
 
     web:
         image: chizhang/nginx
@@ -72,4 +74,5 @@ services:
             MONGO_INITDB_ROOT_USERNAME: daggoo
             MONGO_INITDB_ROOT_PASSWORD: daggoo
 networks:
-    somenetwork:
+    outside:
+        external: true

@@ -2,6 +2,10 @@ nginx.conf:
 
 	需要修改对外服务器ip
 
+start.sh:
+
+	需要修改工程名
+
 
 docker-compose.yml:
 
@@ -11,9 +15,13 @@ docker-compose.yml:
 
 oracle:
 
-	1、修改oracle编码
+	1、docker exec -it dockerId bash
+	
+	2、su oracle
+	
+	3、修改oracle编码，http://note.youdao.com/noteshare?id=a9fc8140a8bf4ba3c7dab69a3c155cb2
 
-	4、创建用户
+	4、创建用户，授权
 
 
 /data目录情况:
