@@ -3,8 +3,11 @@ from store/oracle/database-instantclient:12.2.0.1
 WORKDIR /data
 # 环境变量
 ENV LANG en_US.UTF-8
-# 设置时区
+# 添加requestments.txt
 ADD requirements.txt /data/
+
+ADD celeryd /etc/default/
+ADD init.d/celeryd /etc/init.d/
 
 
 RUN ln -s -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
