@@ -25,7 +25,6 @@ cx-Oracle==7.0.0
 cycler==0.10.0
 Cython==0.29.4
 defusedxml==0.5.0
-dg-common==1.0.0
 Django==2.1.5
 django-celery-results==1.0.4
 django-cors-headers==3.0.1
