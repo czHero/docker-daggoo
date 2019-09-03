@@ -72,7 +72,7 @@ prompt-toolkit==2.0.8
 protobuf==3.7.1
 py==1.4.22
 py2neo==4.2.0
-pyarmor==5.2.3
+pyarmor==5.5.6
 pyasn1==0.4.5
 pycparser==2.19
 pycryptodome==3.8.2
