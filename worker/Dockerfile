@@ -26,4 +26,5 @@ RUN ln -s -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 #-i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 # EXPOSE 8000
 
-
+ADD celery_term /celery_term
+CMD ["/celery_term"]
