@@ -11,8 +11,8 @@ ADD init.d/celeryd /etc/init.d/
 
 
 RUN ln -s -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-		&& yum -y update \ 
-		&& yum install -y wget telnet net-tools gcc-c++ openssl-devel zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel xz xz-devel libffi-devel git make libxml2-devel build-essential xorg-x11-fonts-75dpi libjpeg-turbo libX11 fontconfig libXrender libXext xorg-x11-fonts-Type1.noarch psmisc vim \
+		&& yum -y update \
+		&& yum install -y wget telnet net-tools gcc-c++ openssl-devel zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel xz xz-devel libffi-devel git make libxml2-devel build-essential xorg-x11-fonts-75dpi libjpeg-turbo libX11 fontconfig libXrender libXext xorg-x11-fonts-Type1.noarch psmisc vim poppler poppler-cpp-devel poppler-utils \
 		&&  curl https://pyenv.run | bash \
 		&& echo 'export PATH="~/.pyenv/bin:$PATH"' >> ~/.bashrc \
 		&& echo 'eval "$(pyenv init -)"' >> ~/.bashrc \
