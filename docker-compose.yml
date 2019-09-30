@@ -1,11 +1,11 @@
 version: "3"
 services:
     db:
-        image: chizhang/oracle-ee-11g
+        image: store/oracle/database-enterprise:12.2.0.1
         ports:
             - "15215:1521"
         volumes:
-            - /data/oracle/data:/u01/app/oracle
+            - /data/Test12c:/ORCL
 
     redis:
         image: redis
@@ -24,12 +24,14 @@ services:
             net.core.somaxconn: 4096
 #        ports:
 #            - "8000:8000"
-        depends_on: 
-            - db 
-            - redis 
-        links:
-            - db 
+        depends_on:
+            - db
             - redis
+            - mongo
+        links:
+            - db
+            - redis
+            - mongo
          networks:
              - outside
 
@@ -73,6 +75,19 @@ services:
         environment:
             MONGO_INITDB_ROOT_USERNAME: daggoo
             MONGO_INITDB_ROOT_PASSWORD: daggoo
+
+    rabbitmq:
+        image: rabbitmq
+        restart: always
+        volumes:
+            - /data/rabbitmq/log:/var/log/rabbitmq
+            - /data/rabbitmq/data:/var/lib/rabbitmq
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+        environment:
+            RABBITMQ_DEFAULT_USER: databao
+            RABBITMQ_DEFAULT_PASS: databao123
 networks:
     outside:
         external: true
