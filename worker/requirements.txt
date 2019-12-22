@@ -69,7 +69,7 @@ neobolt==1.7.13
 neotime==1.7.4
 numpy==1.16.1
 oauthlib==3.0.1
-openpyxl==2.5.14
+openpyxl==3.0.0
 pandas==0.24.0
 pdf2image==1.7.0
 pdfkit==0.6.1
