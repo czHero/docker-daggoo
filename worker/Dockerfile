@@ -2,7 +2,7 @@ from store/oracle/database-instantclient:12.2.0.1
 # Update the sources list
 WORKDIR /data
 # 环境变量
-ENV LANG en_US.UTF-8
+ENV LANG zh_CN.UTF-8
 # 添加requestments.txt
 ADD requirements.txt /data/
 
