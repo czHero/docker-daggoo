@@ -68,16 +68,31 @@ services:
             - "17474:7474"
 
     es:
-        image: elasticsearch:6.5.4
+        image: elasticsearch:7.6.1
         volumes:
             - /data/elasticsearch:/usr/share/elasticsearch/data
         ports:
-            - "9003:9300"
-            - "9002:9200"
-        sysctls:
-            vm.max_map_count: 262144
+            - "19300:9300"
+            - "19200:9200"
+#        sysctls:
+#            vm.max_map_count: 262144
+        environment:
+            - discovery.type=single-node
         networks:
-            - somenetwork
+            - outside
+    kibana:
+        image: kibana:7.6.1
+        volumes:
+          - /data/elasticsearch:/usr/share/elasticsearch/data
+        ports:
+          - "15601:5601"
+        depends_on:
+            - es
+        links:
+            - es
+
+        networks:
+          - outside
 
     mongo:
         image: mongo
@@ -97,8 +112,8 @@ services:
             - /data/rabbitmq/log:/var/log/rabbitmq
             - /data/rabbitmq/data:/var/lib/rabbitmq
         ports:
-            - "5672:5672"
-            - "15672:15672"
+            - "5673:5672"
+            - "15673:15672"
         environment:
             RABBITMQ_DEFAULT_USER: daggoo
             RABBITMQ_DEFAULT_PASS: daggoo123
