@@ -46,8 +46,8 @@ services:
             - db
             - redis
             - mongo
-         networks:
-             - outside
+        networks:
+            - outside
 
     web:
         image: chizhang/nginx
@@ -100,8 +100,8 @@ services:
             - "5672:5672"
             - "15672:15672"
         environment:
-            RABBITMQ_DEFAULT_USER: databao
-            RABBITMQ_DEFAULT_PASS: databao123
+            RABBITMQ_DEFAULT_USER: daggoo
+            RABBITMQ_DEFAULT_PASS: daggoo123
 networks:
     outside:
         external: true
