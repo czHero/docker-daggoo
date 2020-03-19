@@ -91,7 +91,7 @@ services:
             MONGO_INITDB_ROOT_PASSWORD: daggoo
 
     rabbitmq:
-        image: rabbitmq
+        image: rabbitmq:management
         restart: always
         volumes:
             - /data/rabbitmq/log:/var/log/rabbitmq
