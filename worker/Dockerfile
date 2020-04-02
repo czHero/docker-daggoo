@@ -12,6 +12,8 @@ ADD html2pdf/simsun.ttc /usr/share/fonts/
 ADD html2pdf/wkhtmltopdf /usr/bin/
 
 
+
+
 RUN ln -s -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 		&& yum -y update \
 		&& yum install -y wget telnet net-tools gcc-c++ openssl-devel zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel xz xz-devel libffi-devel git make libxml2-devel build-essential xorg-x11-fonts-75dpi libjpeg-turbo libX11 fontconfig libXrender libXext xorg-x11-fonts-Type1.noarch psmisc vim poppler poppler-cpp-devel poppler-utils xorg-x11-fonts-75dpi.noarch libjpeg-turbo.x86_64 libX11.x86_64 fontconfig.x86_64 libXrender.x86_64 libXext.x86_64 xorg-x11-fonts-Type1.noarch \
