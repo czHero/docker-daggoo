@@ -188,3 +188,4 @@ zeep==3.4.0
 zipp==0.6.0
 zope.interface==4.7.1
 pymssql==2.1.4
+mysqlclient==1.4.6
