@@ -188,3 +188,6 @@ zipp==0.6.0
 zope.interface==4.7.1
 pymssql==2.1.4
 mysqlclient==1.4.6
+grpcio==1.29.0
+grpcio-tools==1.29.0
+kazoo==2.7.0
