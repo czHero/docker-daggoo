@@ -1,0 +1,33 @@
+from centos:7
+# Update the sources list
+WORKDIR /data
+# 环境变量
+ENV LANG zh_CN.UTF-8
+# 添加requestments.txt
+ADD requirements.txt /data/
+
+ADD celeryd /etc/default/
+ADD init.d/celeryd /etc/init.d/
+ADD html2pdf/simsun.ttc /usr/share/fonts/
+ADD html2pdf/wkhtmltopdf /usr/bin/
+
+
+
+RUN ln -s -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+		&& yum -y update \
+		&& yum install -y wget telnet net-tools gcc gcc-c++ mariadb-devel vim openssl-devel zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel xz xz-devel libffi-devel git make libxml2-devel build-essential xorg-x11-fonts-75dpi libjpeg-turbo libX11 fontconfig libXrender libXext xorg-x11-fonts-Type1.noarch psmisc vim poppler poppler-cpp-devel poppler-utils xorg-x11-fonts-75dpi.noarch libjpeg-turbo.x86_64 libX11.x86_64 fontconfig.x86_64 libXrender.x86_64 libXext.x86_64 xorg-x11-fonts-Type1.noarch \
+		&&  curl https://pyenv.run | bash \
+		&& echo 'export PATH="~/.pyenv/bin:$PATH"' >> ~/.bashrc \
+		&& echo 'eval "$(pyenv init -)"' >> ~/.bashrc \
+		&& echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc \
+		&& source ~/.bashrc \
+		&& pyenv install 3.7.2 \
+		&& pyenv global 3.7.2 \
+		&& source ~/.bashrc \
+		&& pip install --upgrade pip \
+		&& pip install -r requirements.txt
+#-i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
+# EXPOSE 8000
+
+ADD celery_term /celery_term
+CMD ["/celery_term"]
